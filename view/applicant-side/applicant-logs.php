@@ -287,7 +287,7 @@ if (strtolower($role) !== 'applicant') {
                                 <td>${pendingUserScholar.date_applied}</td>
                                 <td>
                                     ${statusText}
-                                    (${pendingUserScholar.remarks})
+                                   
                                 </td>
 
                             </tr>`;

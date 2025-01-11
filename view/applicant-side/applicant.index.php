@@ -426,9 +426,11 @@ if (strtolower($role) !== 'applicant') {
                             container.empty();
 
                             filteredJobs.forEach(function(jobs, index) {
+                                // Check if the user ID is available in the session
+                                const userId = "<?php echo isset($_SESSION['id']) ? htmlspecialchars($_SESSION['id'], ENT_QUOTES, 'UTF-8') : ''; ?>";
 
-                                let statusText = jobs.status === null ? 'Pending' : (jobs.status == 1 ? 'On Going' : 'Already Filled');
-                                let badgeClass = jobs.status === null ? 'badge-secondary' : (jobs.status == 1 ? 'badge-primary' : 'badge-warning');
+                                let statusText = jobs.status === null ? 'Pending' : (jobs.applicant_id != userId ? 'On Going' : 'Already Filled');
+                                let badgeClass = jobs.status === null ? 'badge-secondary' : (jobs.applicant_id != userId ? 'badge-primary' : 'badge-warning');
 
                                 let applicationStartFormatted = new Date(jobs.application_start).toLocaleDateString('en-US', {
                                     year: 'numeric',
@@ -442,11 +444,12 @@ if (strtolower($role) !== 'applicant') {
                                     day: 'numeric'
                                 });
 
-                                // Check if the user ID is available in the session
-                                // const userId = "<?php echo isset($_SESSION['id']) ? htmlspecialchars($_SESSION['id'], ENT_QUOTES, 'UTF-8') : ''; ?>";
 
                                 // Determine if the user has applied for the job
-                                let isApplied = jobs.isApplied;
+                                let isApplied = (jobs.status == 1);
+                                let isExist = (jobs.applicant_id == userId);
+                                console.log("userId:", userId);
+                                console.log("jobs.applicant_id:", jobs.applicant_id);
                                 let card = `
                                     <div class="card mb-2">
                                         <div class="card-body d-flex justify-content-between align-items-center">
@@ -457,12 +460,14 @@ if (strtolower($role) !== 'applicant') {
                                                 <p class="mb-0 small badge ${badgeClass}">${statusText}</p>
                                             </div>
                                             <div>
-                                                ${isApplied ?
+                                                ${isExist ?
                                                 `<button class="btn btn-secondary btn-sm" disabled>Applied</button>
                                                 <a href="applicant-logs.php" class="btn btn-primary btn-sm">Check Status</a>` :
                                                 `<button type="button" class="btn btn-primary btn-sm applyJob-btn" id="apply-btn"
                                                     data-toggle="modal"
                                                     data-target="#jobApplicationModal"
+                                                    data-applicant-id="${userId}"
+                                                    data-applicant-email="${applicant_email}"
                                                     data-job-id="${jobs.id}"
                                                     data-job-requirements="${jobs.requirements}"
                                                     data-job-description="${jobs.description}">
@@ -513,9 +518,13 @@ if (strtolower($role) !== 'applicant') {
                 const jobId = $(this).data('job-id');
                 const jobRequirements = $(this).data('job-requirements');
                 const jobDescription = $(this).data('job-description');
-
+                const applicantId = $(this).data('applicant-id');
+                const applicantEmail = $(this).data('applicant-email');
                 // Populate the modal fields
                 $('#jobId').val(jobId);
+                $('#applicantId').val(applicantId);
+                $('#applicantEmail').val(applicantEmail);
+
                 $('#jobRequirements').text(jobRequirements); // Use .text() for <p> elements
                 $('#jobDescription').text(jobDescription); // Use .text() for <p> elements
             });
@@ -525,6 +534,7 @@ if (strtolower($role) !== 'applicant') {
                 e.preventDefault();
 
                 let formData = new FormData(this);
+
                 formData.append('applyJob', true);
 
                 Swal.fire({

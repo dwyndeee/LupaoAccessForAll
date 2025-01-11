@@ -504,10 +504,23 @@ class DB
     public function getAllJobs()
     {
 
-        $sql = "SELECT job.*, CONCAT(user.firstname, ' ', user.lastname)
-        AS employer_name
-        FROM employmment_jobs job
-        INNER JOIN user_table user ON job.user_id = user.id";
+        $sql = "SELECT 
+            job.*, 
+            CONCAT(user.firstname, ' ', user.lastname) AS employer_name,
+            applications.applicant_id
+        FROM 
+            employmment_jobs job
+        INNER JOIN 
+            user_table user 
+        ON 
+            job.user_id = user.id
+        LEFT JOIN 
+            employment_job_applications applications 
+        ON 
+            job.id = applications.job_id
+        GROUP BY 
+            job.id";
+
 
         $result = $this->mysql->query($sql);
 

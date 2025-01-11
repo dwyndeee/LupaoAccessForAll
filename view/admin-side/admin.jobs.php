@@ -187,6 +187,13 @@ if (strtolower($role) !== 'admin') {
                             </div>
                         </div>
                     </div>
+                    <style>
+                /* Hide the first column (ID) */
+                #dataTable th:nth-child(1),
+                #dataTable td:nth-child(1) {
+                    display: none;
+                }
+            </style>
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -221,6 +228,13 @@ if (strtolower($role) !== 'admin') {
                 </div>
 
             </div>
+            <style>
+                /* Hide the first column (ID) */
+                #dataTable2 th:nth-child(1),
+                #dataTable2 td:nth-child(1) {
+                    display: none;
+                }
+            </style>
 
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

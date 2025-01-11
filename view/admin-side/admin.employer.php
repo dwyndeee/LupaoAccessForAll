@@ -185,7 +185,15 @@ if (strtolower($role) !== 'admin') {
                 </div>
 
             </div>
-
+            
+            <style>
+                /* Hide the first column (ID) */
+                #dataTable th:nth-child(1),
+                #dataTable td:nth-child(1) {
+                    display: none;
+                }
+            </style>
+            
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -257,7 +265,7 @@ if (strtolower($role) !== 'admin') {
                             let statusText = employers.status === null ? 'Pending' : (employers.status == 1 ? 'Approved' : 'Rejected');
 
                             let row = `<tr>
-                                <td>${employers.user_id}</td>
+                                <td style="display:none;">${employers.user_id}</td>
                                 <td>${employers.firstname} ${employers.lastname}</td>
                                 <td>${employers.email}</td>
                                 <td>${employers.created_at}</td>

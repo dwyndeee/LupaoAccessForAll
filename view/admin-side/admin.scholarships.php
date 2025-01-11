@@ -167,7 +167,7 @@ if (strtolower($role) !== 'admin') {
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <!-- <th>ID</th> -->
+                                            <th>ID</th>
                                             <th>Grantor</th>
                                             <th>Title</th>
                                             <!-- <th>Description</th> -->
@@ -192,6 +192,13 @@ if (strtolower($role) !== 'admin') {
                 </div>
 
             </div>
+            <style>
+                /* Hide the first column (ID) */
+                #dataTable th:nth-child(1),
+                #dataTable td:nth-child(1) {
+                    display: none;
+                }
+            </style>
 
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

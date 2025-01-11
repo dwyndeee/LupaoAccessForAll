@@ -166,7 +166,7 @@ if (strtolower($role) !== 'admin') {
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th style="display: none;">ID</th>
                                             <th>Student</th>
                                             <th>Grantor</th>
                                             <th>Title</th>
@@ -188,7 +188,13 @@ if (strtolower($role) !== 'admin') {
                 </div>
 
             </div>
-
+            <style>
+                /* Hide the first column (ID) */
+                #dataTable th:nth-child(1),
+                #dataTable td:nth-child(1) {
+                    display: none;
+                }
+            </style>
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -286,14 +292,14 @@ if (strtolower($role) !== 'admin') {
                             let statusText = rejectedScholar.status === null ? 'Pending' : (rejectedScholar.status == 1 ? 'Approved' : 'Rejected');
 
                             let row = `<tr>
-                                <td>${rejectedScholar.id}</td>
+                                <td style="display:none;">${rejectedScholar.id}</td>
                                 <td>${rejectedScholar.student_name}</td>
                                 <td>${rejectedScholar.grantor}</td>
                                 <td>${rejectedScholar.program_title}</td>
                                 <td>${rejectedScholar.date_applied}</td>
                                 <td>${rejectedScholar.date_approved}</td>
                                 <td>
-                                    ${statusText} (${rejectedScholar.remarks})
+                                    ${statusText}
                                 </td>
                                 <td>
                                     <div class="btn-group">

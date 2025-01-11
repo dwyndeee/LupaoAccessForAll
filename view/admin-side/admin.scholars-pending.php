@@ -225,7 +225,7 @@ if (strtolower($role) !== 'admin') {
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <!-- <th>ID</th> -->
                                             <th>Student</th>
                                             <th>Grantor</th>
                                             <th>Title</th>
@@ -450,7 +450,7 @@ if (strtolower($role) !== 'admin') {
                             let statusText = pendingScholars.status === null ? 'Pending' : (pendingScholars.status == 1 ? 'Approved' : 'Rejected');
 
                             let row = `<tr>
-                                <td>${pendingScholars.id}</td>
+                                <td style="display:none;">${pendingScholars.id}</td>
                                 <td>${pendingScholars.student_name}</td>
                                 <td>${pendingScholars.grantor}</td>
                                 <td>${pendingScholars.program_title}</td>

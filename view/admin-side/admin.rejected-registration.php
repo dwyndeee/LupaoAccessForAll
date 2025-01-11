@@ -167,8 +167,8 @@ if (strtolower($role) !== 'admin') {
                                     <thead>
                                         <tr>
                                             <th>User Id</th>
-                                            <th>Firstname</th>
-                                            <th>Lastname</th>
+                                            <th>FirstnName</th>
+                                            <th>LastName</th>
                                             <th>Email</th>
                                             <th>Created At</th>
                                             <th>Status</th>
@@ -187,6 +187,13 @@ if (strtolower($role) !== 'admin') {
                 </div>
 
             </div>
+            <style>
+                /* Hide the first column (ID) */
+                #dataTable2 th:nth-child(1),
+                #dataTable2 td:nth-child(1) {
+                    display: none;
+                }
+            </style>
 
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -268,7 +275,7 @@ if (strtolower($role) !== 'admin') {
                             let formattedDate = createdAt.toLocaleDateString('en-US', options); // August 3, 2024
 
                             let row = `<tr>
-                                <td>${users.id}</td>
+                                <td style="display:none;">${users.id}</td>
                                 <td>${users.firstname}</td>
                                 <td>${users.lastname}</td>
                                 <td>${users.email}</td>

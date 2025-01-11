@@ -144,6 +144,13 @@ if (strtolower($role) !== 'employer') {
                 </div>
 
             </div>
+            <style>
+                /* Hide the first column (ID) */
+                #dataTable2 th:nth-child(1),
+                #dataTable2 td:nth-child(1) {
+                    display: none;
+                }
+            </style>
 
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

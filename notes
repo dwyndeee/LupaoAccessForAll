@@ -1,0 +1,7 @@
+navigate on code (search keyword on dbconfig.php)
+
+1. general functions - fetchSelect, insert, selectAllRoles, user_signup,
+   login_user, getUserByEmail, storePasswordResetToken, getTokenData,
+   updatePassword, invalidateToken.
+
+2. Scholarship Programs Functions - getAllScholarshipPrograms, 

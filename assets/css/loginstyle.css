@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+
+/* Styling the select dropdown */
+#user_type, #barangay, #gender {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  border: 2px solid #ddd;
+  font-size: 16px;
+  color: #333;
+  appearance: none; /* Removes default arrow for cross-browser consistency */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+/* Adding a custom arrow */
+#user_type::after, #barangay::after, #gender::after {
+  content: '\25BC'; /* Unicode for downward arrow */
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  pointer-events: none;
+}
+
+/* Adding focus effect */
+#user_type:focus, #barangay:focus, #gender:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Left section (30% width, blue background) */
+.left-section {
+  width: 30%;
+  background-color: #1c2e53;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Right section (70% width, grayish background) */
+.right-section {
+  width: 70%;
+  background-color: #f4f4f4;
+  display: flex;
+  /* border-radius:; */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Image/logo that sits at the border between blue and gray sections */
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  padding: 20px;
+  /* Adjust max width of image on smaller screens */
+  max-width: 80%; 
+}
+
+.logo-container img {
+  max-width: 450px;
+  height: auto;
+}
+
+/* Form on the right side */
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;  /* Increase width on larger screens */
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-weight: 800;
+  color: #1c2e53;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.form-container a {
+  color: #1c2e53;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.form-container a:hover {
+  color: #2a4375;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  background-color: #1c2e53;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #2a4375;
+}
+
+.form-container p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-container p a {
+  color: #1c2e53;
+  text-decoration: none;
+}
+
+/* Add some basic styles for form switching */
+.hidden {
+  display: none;
+}
+.form-container {
+  transition: all 0.3s ease;
+}
+
+/* Responsive design for tablets */
+@media (max-width: 1024px) {
+  .left-section {
+    display: none;
+  }
+
+  .right-section {
+    width: 100%;
+    padding: 20px;
+    justify-content: flex-start; /* Align content to top on small screens */
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 10%; /* Adjust logo placement */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 50%; /* Adjust image size for mobile */
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 30px;
+    max-width: 100%;
+    margin-top: 30px; /* Add space above form */
+  }
+
+  .form-container input {
+    padding: 12px;
+  }
+
+  .form-container button {
+    padding: 12px;
+  }
+}
+
+/* Responsive design for smaller screens (mobile) */
+@media (max-width: 768px) {
+  .left-section {
+    display: none;
+  }
+
+  .right-section {
+    width: 100%;
+    padding: 20px;
+    justify-content: flex-start; /* Align content to top on small screens */
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 10%; /* Adjust logo placement */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 50%; /* Adjust image size for mobile */
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 30px;
+    max-width: 100%;
+    margin-top: 30px; /* Add space above form */
+  }
+
+  .form-container input {
+    padding: 12px;
+  }
+
+  .form-container button {
+    padding: 12px;
+  }
+}

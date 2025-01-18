@@ -331,19 +331,19 @@ if (strtolower($role) !== 'applicant') {
                             <div class="col-md-6 mb-2">
                                 <label for="requirement_2" class="form-label">Birth Certificate(PSA)</label>
                                 <input type="file" id="requirement_2" name="requirement_2"
-                                    accept=".pdf,.doc,.docx,.png,.jpeg" class="form-control">
+                                    accept=".pdf,.doc,.docx,.png,.jpeg" class="form-control" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="requirement_3" class="form-label">Certificate of Enrollment</label>
                                 <input type="file" id="requirement_3" name="requirement_3"
-                                    accept=".pdf,.doc,.docx,.png,.jpeg" class="form-control">
+                                    accept=".pdf,.doc,.docx,.png,.jpeg" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="requirement_4" class="form-label">Certificate of Grades</label>
                                 <input type="file" id="requirement_4" name="requirement_4"
-                                    accept=".pdf,.doc,.docx,.png,.jpeg" class="form-control">
+                                    accept=".pdf,.doc,.docx,.png,.jpeg" class="form-control" required>
                             </div>
                         </div>
                         <!-- Add more fields as necessary -->

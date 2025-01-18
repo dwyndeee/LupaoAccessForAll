@@ -161,24 +161,26 @@ if (strtolower($role) !== 'admin') {
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-graduation-cap"></i> Scholar List</h6>
-                            <div class="d-flex ms-auto">
-                                <button class="btn btn-success btn-sm me-4" type="button" data-bs-toggle="modal" data-bs-target="#notify-Modal">
-                                    <i class="fas fa-bell"></i> Notify Scholars
+                            <div class="d-flex flex-wrap ms-auto" style="gap: 1rem;">
+                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#notify-Modal">
+                                    <i class="fas fa-bell"></i> Notify
                                 </button>
                                 <!-- Button to generate PDF -->
-                                <button class="btn btn-success btn-sm me-2" type="button" id="generateReportBtn">
+                                <button class="btn btn-success btn-sm" type="button" id="generateReportBtn">
                                     <i class="fas fa-file"></i> Generate Report
                                 </button>
-
-                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                                <script>
-                                    $('#generateReportBtn').click(function() {
-                                        // Trigger PDF generation
-                                        window.location.href = 'generate_report.php';
-                                    });
-                                </script>
                             </div>
+
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                                $('#generateReportBtn').click(function() {
+                                    // Trigger PDF generation
+                                    window.location.href = 'generate_report_scholar.php';
+                                });
+                            </script>
                         </div>
+
+
 
                         <div class="card-body">
                             <div class="table-responsive">
@@ -210,8 +212,10 @@ if (strtolower($role) !== 'admin') {
             </div>
             <style>
                 /* Hide the first column (ID) */
-                #dataTable th:nth-child(1),#dataTable th:nth-child(2),
-                #dataTable td:nth-child(1), #dataTable td:nth-child(2) {
+                #dataTable th:nth-child(1),
+                #dataTable th:nth-child(2),
+                #dataTable td:nth-child(1),
+                #dataTable td:nth-child(2) {
                     display: none;
                 }
             </style>

@@ -160,7 +160,20 @@ if (strtolower($role) !== 'admin') {
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-users"></i> All Users</h6>
+                            <!-- Button to generate PDF -->
+                            <button class="btn btn-success btn-sm" type="button" id="generateReportBtn">
+                                <i class="fas fa-file"></i> Generate Report
+                            </button>
                         </div>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                                $('#generateReportBtn').click(function() {
+                                    // Trigger PDF generation
+                                    window.location.href = 'generate_report_alluser.php';
+                                });
+                            </script>
+
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
